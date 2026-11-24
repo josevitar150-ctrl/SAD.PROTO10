@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PTC OJT Monitoring System | Registration</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<main class="login-page">
+    <div class="login-container">
+
+        <section class="login-left">
+            <img src="css/js/assets/images/ptc-logo.png" alt="PTC Logo">
+
+            <h1>Start Your<br>OJT Journey</h1>
+
+            <p>
+                Register your student account to access the Student
+                Internship and On-the-Job Training Monitoring System.
+            </p>
+
+            <p style="margin-top: 25px;">
+                Pateros Technological College
+            </p>
+        </section>
+
+        <section class="login-right">
+
+            <h2>Create Student Account</h2>
+            <p>Please fill in the required information.</p>
+
+            <form id="registrationForm" class="login-form">
+
+                <div class="form-group">
+                    <label for="studentName">Full Name</label>
+                    <input
+                        type="text"
+                        id="studentName"
+                        placeholder="Enter your full name"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="studentNumber">Student Number</label>
+                    <input
+                        type="text"
+                        id="studentNumber"
+                        placeholder="Enter your student number"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="studentEmail">PTC Email Address</label>
+                    <input
+                        type="email"
+                        id="studentEmail"
+                        placeholder="Enter your PTC email address"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="studentCourse">Course and Section</label>
+                    <input
+                        type="text"
+                        id="studentCourse"
+                        placeholder="Example: BSIT 3TL"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="studentPassword">Password</label>
+                    <input
+                        type="password"
+                        id="studentPassword"
+                        minlength="6"
+                        placeholder="Create a password"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        placeholder="Confirm your password"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="primary-button">
+                    Submit Registration
+                </button>
+
+                <p id="registrationMessage" class="message"></p>
+
+            </form>
+
+            <div class="login-links">
+                <span>Already have an account?</span>
+                <a href="index.html">Back to Login</a>
+            </div>
+
+        </section>
+
+    </div>
+</main>
+
+<script src="css/js/app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PTC OJT Monitoring System | Login</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<main class="login-page">
+    <div class="login-container">
+
+        <section class="login-left">
+            <img src="css/js/assets/images/ptc-logo.png" alt="PTC Logo">
+
+            <h1>Student Internship<br>Monitoring System</h1>
+
+            <p>
+                A centralized platform for monitoring student internship
+                and on-the-job training activities.
+            </p>
+
+            <p style="margin-top: 25px;">
+                Pateros Technological College
+            </p>
+        </section>
+
+        <section class="login-right">
+            <h2>Welcome Back!</h2>
+            <p>Please sign in to access your account.</p>
+
+            <form id="loginForm" class="login-form">
+
+                <div class="form-group">
+                    <label for="loginEmail">Email Address</label>
+                    <input
+                        type="email"
+                        id="loginEmail"
+                        placeholder="Enter your email"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        placeholder="Enter your password"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="primary-button">
+                    Log In
+                </button>
+
+            </form>
+
+            <p id="loginMessage" class="message"></p>
+
+            <div class="login-links">
+                <a href="#" id="forgotPasswordLink">
+                    Forgot your password?
+                </a>
+
+                <a href="register.html">
+                    Create a student account
+                </a>
+            </div>
+
+            <section id="recoverySection" class="hidden form-container">
+
+                <h3>Recover Student Account</h3>
+
+                <p>
+                    Enter your registered student number and email address.
+                </p>
+
+                <form id="recoveryForm">
+
+                    <div class="form-group">
+                        <label for="recoveryNumber">Student Number</label>
+                        <input type="text" id="recoveryNumber" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recoveryEmail">Registered Email</label>
+                        <input type="email" id="recoveryEmail" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="newPassword">New Password</label>
+                        <input
+                            type="password"
+                            id="newPassword"
+                            minlength="6"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="primary-button">
+                            Reset Password
+                        </button>
+                    </div>
+
+                </form>
+
+                <p id="recoveryMessage" class="message"></p>
+
+            </section>
+
+        
+
+        </section>
+
+    </div>
+</main>
+
+<script src="css/js/app.js"></script>
+
+</body>
+</html>

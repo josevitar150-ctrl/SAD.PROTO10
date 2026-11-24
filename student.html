@@ -1,0 +1,611 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard | PTC OJT</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="admin-header">
+    <div class="brand">
+        <img src="css/js/assets/images/ptc-logo.png" alt="PTC Logo">
+        <div>
+            <h2>PTC OJT</h2>
+            <span>MONITORING SYSTEM</span>
+        </div>
+    </div>
+
+    <div class="header-right">
+        <span>Student Intern</span>
+        <button id="logoutButton" class="logout-button">Log Out</button>
+    </div>
+</header>
+
+<div class="dashboard-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="dashboard-sidebar">
+        <div class="sidebar-heading">
+            <h3>Student Intern</h3>
+            <p>Navigation Menu</p>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="#studentDashboard" class="sidebar-link active">
+                <span class="sidebar-icon">⌂</span>
+                Dashboard
+            </a>
+
+            <a href="#profile" class="sidebar-link">
+                <span class="sidebar-icon">♙</span>
+                My Profile
+            </a>
+
+            <a href="#placement" class="sidebar-link">
+                <span class="sidebar-icon">⌂</span>
+                Company Placement
+            </a>
+
+            <a href="#ojt-hours-target" class="sidebar-link">
+                <span class="sidebar-icon">◷</span>
+                Required OJT Hours
+            </a>
+
+            <a href="#requirements" class="sidebar-link">
+                <span class="sidebar-icon">▤</span>
+                Requirements
+            </a>
+
+            <a href="#dailyReports" class="sidebar-link">
+                <span class="sidebar-icon">▣</span>
+                Daily Attendance
+            </a>
+
+            <a href="#weeklyReports" class="sidebar-link">
+                <span class="sidebar-icon">▤</span>
+                Weekly Reports
+            </a>
+
+            <a href="#evaluations" class="sidebar-link">
+                <span class="sidebar-icon">★</span>
+                Evaluation Forms
+            </a>
+
+            <a href="#progress" class="sidebar-link">
+                <span class="sidebar-icon">◴</span>
+                OJT Progress
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <button id="studentSidebarLogout" class="sidebar-logout">
+                Log Out
+            </button>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="admin-container dashboard-main" id="studentDashboard">
+
+        <!-- DASHBOARD -->
+        <section class="admin-welcome" id="student-overview">
+            <h1>Welcome, <span id="studentName">Student</span>!</h1>
+            <p>Welcome to your PTC OJT Monitoring System dashboard.</p>
+        </section>
+
+        <!-- DASHBOARD STATISTICS -->
+        <section class="dashboard-stats">
+            <div class="stat-card">
+                <h3 id="ojtStatus">Not Started</h3>
+                <p>OJT Status</p>
+            </div>
+
+            <div class="stat-card">
+                <h3 id="accountStatus">Pending</h3>
+                <p>Account Status</p>
+            </div>
+
+            <div class="stat-card">
+                <h3 id="renderedHours">0</h3>
+                <p>Rendered Hours</p>
+            </div>
+        </section>
+
+        <!-- STUDENT PROFILE -->
+        <section class="student-profile-section" id="profile">
+            <div class="section-heading-row">
+                <div>
+                    <h2>My Profile</h2>
+                    <p>View and manage your student information.</p>
+                </div>
+
+                <button type="button" id="editProfileButton" class="secondary-button">
+                    Edit Information
+                </button>
+            </div>
+
+            <div class="profile-details">
+                <div class="profile-item">
+                    <strong>Full Name</strong>
+                    <span id="profileName">-</span>
+                </div>
+
+                <div class="profile-item">
+                    <strong>Student Number</strong>
+                    <span id="profileNumber">-</span>
+                </div>
+
+                <div class="profile-item">
+                    <strong>PTC Email</strong>
+                    <span id="profileEmail">-</span>
+                </div>
+
+                <div class="profile-item">
+                    <strong>Course and Section</strong>
+                    <span id="profileCourse">-</span>
+                </div>
+            </div>
+
+            <!-- EDIT PROFILE FORM -->
+            <form id="editProfileForm" class="form-container hidden">
+
+                <h3>Edit Student Information</h3>
+
+                <div class="form-group">
+                    <label for="editProfileName">Full Name</label>
+                    <input
+                        type="text"
+                        id="editProfileName"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="editProfileEmail">PTC Email</label>
+                    <input
+                        type="email"
+                        id="editProfileEmail"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="editProfileCourse">Course and Section</label>
+                    <input
+                        type="text"
+                        id="editProfileCourse"
+                        required
+                    >
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="primary-button">
+                        Save Changes
+                    </button>
+
+                    <button type="button" id="cancelProfileEdit" class="secondary-button">
+                        Cancel
+                    </button>
+                </div>
+
+                <p id="profileEditMessage" class="message"></p>
+            </form>
+        </section>
+
+        <!-- COMPANY PLACEMENT -->
+        <section class="student-profile-section" id="placement">
+            <h2>Company Placement</h2>
+            <p>Submit your proposed OJT company placement for professor review.</p>
+
+            <div class="placement-information">
+                <p>
+                    <strong>Company Name:</strong>
+                    <span id="studentCompanyName">Not submitted</span>
+                </p>
+
+                <p>
+                    <strong>Company Address:</strong>
+                    <span id="studentCompanyAddress">Not submitted</span>
+                </p>
+
+                <p>
+                    <strong>Placement Status:</strong>
+                    <span id="studentPlacementStatus">Not Submitted</span>
+                </p>
+
+                <p id="placementFeedback" class="message"></p>
+            </div>
+
+            <form id="placementForm" class="form-container">
+
+                <h3>Submit Company Placement</h3>
+
+                <div class="form-group">
+                    <label for="companyName">Company Name</label>
+                    <input
+                        type="text"
+                        id="companyName"
+                        placeholder="Enter company name"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="companyAddress">Company Address</label>
+                    <input
+                        type="text"
+                        id="companyAddress"
+                        placeholder="Enter company address"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="companyContactPerson">Contact Person</label>
+                    <input
+                        type="text"
+                        id="companyContactPerson"
+                        placeholder="Enter contact person"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="companyContactNumber">Contact Number</label>
+                    <input
+                        type="tel"
+                        id="companyContactNumber"
+                        placeholder="Enter contact number"
+                        required
+                    >
+                </div>
+
+                <button type="submit" id="placementSubmitButton" class="primary-button">
+                    Submit Company Placement
+                </button>
+
+                <p id="placementMessage" class="message"></p>
+            </form>
+        </section>
+
+        <!-- LOCKED OJT FEATURES -->
+        <div id="unlockedOjtFeatures" class="hidden">
+
+            <!-- REQUIRED OJT HOURS -->
+            <section class="student-profile-section" id="ojt-hours-target">
+                <h2>Required OJT Hours</h2>
+                <p>
+                    Set your required OJT hours before submitting daily attendance.
+                    Use the total hours required by your program.
+                </p>
+
+                <form id="requiredHoursForm" class="form-container">
+
+                    <div class="form-group">
+                        <label for="requiredOjtHours">Required OJT Hours</label>
+                        <input
+                            type="number"
+                            id="requiredOjtHours"
+                            min="1"
+                            step="1"
+                            placeholder="Enter your required OJT hours"
+                            required
+                        >
+                    </div>
+
+                    <button type="submit" id="saveRequiredHoursButton" class="primary-button">
+                        Save Required Hours
+                    </button>
+
+                    <p id="requiredHoursMessage" class="message"></p>
+                </form>
+
+                <p>
+                    <strong>Current Target:</strong>
+                    <span id="requiredHoursDisplay">Not yet set</span>
+                </p>
+            </section>
+
+            <!-- REQUIREMENTS -->
+            <section class="student-list-section" id="requirements">
+                <h2>OJT Requirements</h2>
+                <p>Upload the documents required for your OJT.</p>
+
+                <form id="requirementForm" class="form-container">
+
+                    <div class="form-group">
+                        <label for="requirementName">Requirement Name</label>
+                        <input
+                            type="text"
+                            id="requirementName"
+                            placeholder="Enter requirement name"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="requirementFile">Upload Requirement File</label>
+                        <input
+                            type="file"
+                            id="requirementFile"
+                            required
+                        >
+                    </div>
+
+                    <button type="submit" class="primary-button">
+                        Submit Requirement
+                    </button>
+
+                    <p id="requirementMessage" class="message"></p>
+                </form>
+
+                <h3>Submitted Requirements</h3>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Requirement</th>
+                                <th>Submitted File</th>
+                                <th>Date Submitted</th>
+                                <th>Status</th>
+                                <th>Feedback</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="studentRequirementTable"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- DAILY ATTENDANCE -->
+            <section class="student-list-section" id="dailyReports">
+                <h2>Daily Attendance and Activity Report</h2>
+                <p>Record your daily attendance and activities during your OJT.</p>
+
+                <p id="dailyHoursLockMessage" class="message"></p>
+
+                <form id="dailyReportForm" class="form-container">
+
+                    <div class="form-group">
+                        <label for="reportDate">Attendance Date</label>
+                        <input
+                            type="date"
+                            id="reportDate"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="timeIn">Time In</label>
+                        <input
+                            type="time"
+                            id="timeIn"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="timeOut">Time Out</label>
+                        <input
+                            type="time"
+                            id="timeOut"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dailyActivities">Daily Activities</label>
+                        <textarea
+                            id="dailyActivities"
+                            placeholder="Describe the activities you performed today"
+                            required
+                        ></textarea>
+                    </div>
+
+                    <button type="submit" class="primary-button">
+                        Submit Daily Report
+                    </button>
+
+                    <p id="dailyReportMessage" class="message"></p>
+                </form>
+
+                <h3>Daily Attendance History</h3>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Time In</th>
+                                <th>Time Out</th>
+                                <th>Activities</th>
+                                <th>Rendered Hours</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="studentDailyReportHistory"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- WEEKLY REPORTS -->
+            <section class="student-list-section" id="weeklyReports">
+                <h2>Weekly Narrative Report</h2>
+                <p>
+                    Submit your weekly OJT activities and upload at least five pictures
+                    as documentation.
+                </p>
+
+                <form id="weeklyReportForm" class="form-container">
+
+                    <div class="form-group">
+                        <label for="weekStart">Week Start Date</label>
+                        <input
+                            type="date"
+                            id="weekStart"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="weekEnd">Week End Date</label>
+                        <input
+                            type="date"
+                            id="weekEnd"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="weeklyNarrative">Weekly Narrative</label>
+                        <textarea
+                            id="weeklyNarrative"
+                            placeholder="Describe your activities and experiences for the week"
+                            required
+                        ></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="weeklyPictures">Upload Pictures (Minimum of 5)</label>
+                        <input
+                            type="file"
+                            id="weeklyPictures"
+                            accept="image/*"
+                            multiple
+                            required
+                        >
+                    </div>
+
+                    <button type="submit" class="primary-button">
+                        Submit Weekly Report
+                    </button>
+
+                    <p id="weeklyReportMessage" class="message"></p>
+                </form>
+
+                <h3>Weekly Report History</h3>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Week Start</th>
+                                <th>Week End</th>
+                                <th>Narrative</th>
+                                <th>Pictures</th>
+                                <th>Date Submitted</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="studentWeeklyReportHistory"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- EVALUATION FORMS -->
+            <section class="student-list-section" id="evaluations">
+                <h2>Company Evaluation Forms</h2>
+                <p>
+                    Download and print the evaluation form. Give it to your company
+                    supervisor for completion.
+                </p>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Evaluation Form</th>
+                                <th>Description</th>
+                                <th>File</th>
+                                <th>Date Uploaded</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="studentEvaluationTable"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- OJT PROGRESS -->
+            <section class="student-profile-section" id="progress">
+                <h2>My OJT Progress</h2>
+                <p>Monitor your rendered hours and submitted OJT records.</p>
+
+                <div class="progress-information">
+                    <p>
+                        <strong>Company:</strong>
+                        <span id="progressCompany">Not yet approved</span>
+                    </p>
+
+                    <p>
+                        <strong>Rendered Hours:</strong>
+                        <span id="progressHours">0</span>
+                    </p>
+
+                    <p>
+                        <strong>Daily Reports:</strong>
+                        <span id="progressDailyCount">0</span>
+                    </p>
+
+                    <p>
+                        <strong>Weekly Reports:</strong>
+                        <span id="progressWeeklyCount">0</span>
+                    </p>
+
+                    <p>
+                        <strong>Submitted Requirements:</strong>
+                        <span id="progressRequirementCount">0</span>
+                    </p>
+                </div>
+
+                <div class="progress-summary">
+                    <div class="progress-label-row">
+                        <strong>OJT Completion</strong>
+                        <strong id="progressPercent">0%</strong>
+                    </div>
+
+                    <div class="progress-bar-track" id="progressBarTrack">
+                        <div class="progress-bar-fill" id="progressBarFill"></div>
+                    </div>
+
+                    <div class="progress-hours-details">
+                        <p>
+                            Completed:
+                            <strong id="completedHours">0 hours</strong>
+                        </p>
+
+                        <p>
+                            Remaining:
+                            <strong id="remainingHours">Not yet set</strong>
+                        </p>
+
+                        <p>
+                            Required:
+                            <strong id="progressRequiredHours">Not yet set</strong>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- LOCKED FEATURE MESSAGE -->
+        <section id="placementLockMessage" class="student-profile-section">
+            <h2>OJT Features Locked</h2>
+            <p>
+                Your OJT features will become available after your proposed company
+                placement has been approved by your OJT Professor.
+            </p>
+        </section>
+
+    </main>
+</div>
+
+<script src="css/js/app.js"></script>
+
+</body>
+</html>

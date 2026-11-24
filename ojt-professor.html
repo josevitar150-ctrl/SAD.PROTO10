@@ -1,0 +1,349 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OJT Professor Dashboard | PTC OJT</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="admin-header">
+    <div class="brand">
+        <img src="css/js/assets/images/ptc-logo.png" alt="PTC Logo">
+        <div>
+            <h2>PTC OJT</h2>
+            <span>MONITORING SYSTEM</span>
+        </div>
+    </div>
+
+    <div class="header-right">
+        <span>OJT Professor</span>
+        <button id="professorLogoutButton" class="logout-button">Log Out</button>
+    </div>
+</header>
+
+<div class="dashboard-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="dashboard-sidebar">
+        <div class="sidebar-heading">
+            <h3>OJT Professor</h3>
+            <p>Navigation Menu</p>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="#professor-dashboard" class="sidebar-link active">
+                <span class="sidebar-icon">⌂</span>
+                Dashboard
+            </a>
+
+            <a href="#students" class="sidebar-link">
+                <span class="sidebar-icon">♙</span>
+                Student Records
+            </a>
+
+            <a href="#placements" class="sidebar-link">
+                <span class="sidebar-icon">⌂</span>
+                Company Placements
+            </a>
+
+            <a href="#requirements" class="sidebar-link">
+                <span class="sidebar-icon">▤</span>
+                Requirements
+            </a>
+
+            <a href="#daily-reports" class="sidebar-link">
+                <span class="sidebar-icon">▣</span>
+                Daily Reports
+            </a>
+
+            <a href="#weekly-reports" class="sidebar-link">
+                <span class="sidebar-icon">▤</span>
+                Weekly Reports
+            </a>
+
+            <a href="#evaluations" class="sidebar-link">
+                <span class="sidebar-icon">★</span>
+                Evaluation Forms
+            </a>
+
+            <a href="#progress" class="sidebar-link">
+                <span class="sidebar-icon">◷</span>
+                Student Progress
+            </a>
+
+            <a href="#reports" class="sidebar-link">
+                <span class="sidebar-icon">▥</span>
+                Monitoring Reports
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <button id="professorSidebarLogout" class="sidebar-logout">
+                Log Out
+            </button>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="admin-container dashboard-main">
+
+        <!-- DASHBOARD -->
+        <section class="admin-welcome" id="professor-dashboard">
+            <h1>OJT Professor Dashboard</h1>
+            <p>Monitor student internship activities and OJT progress.</p>
+        </section>
+
+        <!-- STATISTICS -->
+        <section class="dashboard-stats">
+            <div class="stat-card">
+                <h3 id="professorTotalStudents">0</h3>
+                <p>Total OJT Students</p>
+            </div>
+
+            <div class="stat-card">
+                <h3 id="professorPendingPlacements">0</h3>
+                <p>Pending Company Placements</p>
+            </div>
+
+            <div class="stat-card">
+                <h3 id="professorPendingReports">0</h3>
+                <p>Submitted Reports</p>
+            </div>
+        </section>
+
+        <!-- STUDENT RECORDS -->
+        <section class="student-list-section" id="students">
+            <h2>Student Records</h2>
+            <p>View the registered students and their account information.</p>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                <tr>
+                   <th>Student Name</th>
+                    <th>Student Number</th>
+                  <th>Email</th>
+                   <th>Course and Section</th>
+                </tr>
+                </thead>
+
+                    <tbody id="professorStudentTableBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- COMPANY PLACEMENTS -->
+        <section class="student-list-section" id="placements">
+            <h2>Company Placement Requests</h2>
+            <p>Review and approve or reject student company placement submissions.</p>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Company Name</th>
+                            <th>Company Address</th>
+                            <th>Contact Person</th>
+                            <th>Contact Number</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="professorPlacementTableBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- REQUIREMENTS -->
+        <section class="student-list-section" id="requirements">
+            <h2>Student Requirements</h2>
+            <p>Review submitted OJT requirements and provide verification feedback.</p>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Requirement</th>
+                            <th>Submitted File</th>
+                            <th>Date Submitted</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="professorRequirementTable"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- DAILY REPORTS -->
+        <section class="student-list-section" id="daily-reports">
+            <h2>Daily Attendance and Activity Reports</h2>
+            <p>Monitor student attendance, activities, and rendered hours.</p>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Date</th>
+                            <th>Time In</th>
+                            <th>Time Out</th>
+                            <th>Activities</th>
+                            <th>Rendered Hours</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="professorDailyReportTableBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- WEEKLY REPORTS -->
+        <section class="student-list-section" id="weekly-reports">
+            <h2>Weekly Narrative Reports</h2>
+            <p>View student weekly activities and submitted pictures.</p>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Week Start</th>
+                            <th>Week End</th>
+                            <th>Narrative Report</th>
+                            <th>Pictures</th>
+                            <th>Date Submitted</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="professorWeeklyReportTableBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- EVALUATION FORMS -->
+        <section class="student-list-section" id="evaluations">
+            <h2>Evaluation Forms</h2>
+            <p>Upload the evaluation form that students can download and print for their company supervisor.</p>
+
+            <form id="evaluationFormUpload" class="form-container">
+
+                <div class="form-group">
+                    <label for="evaluationTitle">Evaluation Form Title</label>
+                    <input
+                        type="text"
+                        id="evaluationTitle"
+                        placeholder="Enter evaluation form title"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="evaluationDescription">Description</label>
+                    <textarea
+                        id="evaluationDescription"
+                        placeholder="Enter a short description"
+                    ></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="evaluationFile">Select Evaluation Form</label>
+                    <input
+                        type="file"
+                        id="evaluationFile"
+                        accept=".pdf,.jpg,.jpeg,.png"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="primary-button">
+                    Upload Evaluation Form
+                </button>
+
+                <p id="evaluationMessage" class="message"></p>
+            </form>
+
+            <h3>Uploaded Evaluation Forms</h3>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Form Title</th>
+                            <th>Description</th>
+                            <th>File</th>
+                            <th>Date Uploaded</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="professorEvaluationTable"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- STUDENT PROGRESS -->
+        <section class="student-list-section" id="progress">
+            <h2>Student OJT Progress</h2>
+            <p>Monitor the rendered hours and submitted OJT records of students.</p>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Company</th>
+                            <th>Rendered Hours</th>
+                            <th>Required Hours</th>
+                            <th>Daily Reports</th>
+                            <th>Weekly Reports</th>
+                            <th>Requirements</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="professorProgressTable"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- MONITORING REPORTS -->
+        <section class="student-list-section" id="reports">
+            <h2>OJT Monitoring Reports</h2>
+            <p>View the overall OJT monitoring summary.</p>
+
+            <div class="dashboard-stats report-stats">
+                <div class="stat-card">
+                    <h3 id="reportTotalHours">0</h3>
+                    <p>Total Rendered Hours</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3 id="reportDailyCount">0</h3>
+                    <p>Total Daily Reports</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3 id="reportWeeklyCount">0</h3>
+                    <p>Total Weekly Reports</p>
+                </div>
+            </div>
+
+            <button id="printReportButton" class="primary-button">
+                Print Monitoring Report
+            </button>
+        </section>
+
+    </main>
+</div>
+
+<script src="css/js/app.js"></script>
+
+</body>
+</html>
